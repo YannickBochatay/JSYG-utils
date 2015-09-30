@@ -2172,6 +2172,10 @@
             return method == 'get' ? value : this;
         };
     };
+    
+    JSYG.Matrix = Matrix;
+    JSYG.Vect = Vect;
+    JSYG.Point = Point;
 
     return JSYG;
 });
