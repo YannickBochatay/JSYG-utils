@@ -1,6 +1,6 @@
 (function(root,factory) {
     
-    if (typeof define == "function" && define.amd) define(["jsyg","jsyg-matrix","jsyg-vect","jsyg-point"],factory);
+    if (typeof define == "function" && define.amd) define(["jsyg-wrapper","jsyg-matrix","jsyg-vect","jsyg-point"],factory);
     else if (root.JSYG) {
         
         if (JSYG.Matrix && JSYG.Vect && JSYG.Point) factory(JSYG,JSYG.Matrix,JSYG.Vect,JSYG.Point);

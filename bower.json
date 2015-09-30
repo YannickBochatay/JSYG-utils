@@ -8,7 +8,7 @@
         "globals"
     ],
     "dependencies": {
-        "jsyg": "latest",
+        "jsyg-wrapper": "latest",
         "jsyg-point":"latest",
         "jsyg-vect":"latest",
         "jsyg-matrix":"latest"

@@ -356,7 +356,6 @@
         }
     };
 	
-   	
     JSYG.prototype.position = function() {
 		
         if (!this.isSVG()) return $.fn.position.call(this);

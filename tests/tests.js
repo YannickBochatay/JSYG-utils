@@ -3,7 +3,7 @@ if (typeof require!= "undefined") {
     require.config({
         paths: {
             "jquery": '../bower_components/jquery/dist/jquery',
-            "jsyg": '../bower_components/jsyg/JSYG',
+            "jsyg-wrapper": '../bower_components/jsyg-wrapper/JSYG-wrapper',
             "jsyg-point" : '../bower_components/jsyg-point/JSYG.Point',
             "jsyg-vect" : '../bower_components/jsyg-vect/JSYG.Vect',
             "jsyg-matrix" : '../bower_components/jsyg-matrix/JSYG.Matrix',
