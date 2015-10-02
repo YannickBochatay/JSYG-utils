@@ -1,6 +1,6 @@
 (function(root,factory) {
     
-    if (typeof define == 'function' && define.amd) define(["jsyg-point"],factory);
+    if (typeof define == 'function' && define.amd) define("jsyg-vect",["jsyg-point"],factory);
     else {
         if (typeof JSYG != "undefined") {
             

@@ -57,4 +57,19 @@ if (typeof require!= "undefined") {
         equal(dimRect.width,20,"ordonnée");
     });
     
+    test("ViewBox", function() {
+       
+        var svg = $('<svg width="500" height="400">').appendTo(container);
+        
+        deepEqual(svg.viewBox(),{x:0,y:0,width:500,height:400},"Récupération de la viewbox");
+        
+        deepEqual(
+            svg.viewBox({x:50,y:50,width:1000,height:80}).viewBox(),
+            {x:50,y:50,width:1000,height:80},
+            "Modification de la viewbox"
+        );
+        
+        
+    });
+    
 }));

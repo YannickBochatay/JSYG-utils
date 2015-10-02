@@ -1,6 +1,6 @@
 (function(root,factory) {
     
-    if (typeof define == 'function' && define.amd) define(factory);
+    if (typeof define == 'function' && define.amd) define("jsyg-point",factory);
     else if (typeof JSYG != "undefined") factory();
     else root.Point = factory();
     
