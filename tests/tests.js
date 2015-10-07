@@ -7,6 +7,7 @@ if (typeof require!= "undefined") {
             "jsyg-point" : '../bower_components/jsyg-point/JSYG.Point',
             "jsyg-vect" : '../bower_components/jsyg-vect/JSYG.Vect',
             "jsyg-matrix" : '../bower_components/jsyg-matrix/JSYG.Matrix',
+            "jsyg-strutils" : '../bower_components/jsyg-strutils/JSYG-strutils',
             "jsyg-utils" : '../JSYG-utils'
         },
         urlArgs: "bust=" + (+new Date())
@@ -69,7 +70,11 @@ if (typeof require!= "undefined") {
             "Modification de la viewbox"
         );
         
-        
+    });
+    
+    test("strutils", function() {
+       
+        ok( $.urlencode(" "), "%20", "Encodage d'url" );        
     });
     
 }));
