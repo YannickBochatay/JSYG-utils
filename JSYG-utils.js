@@ -2025,7 +2025,7 @@
                 }
                 
                 $nodes.off("mousemove",mousemoveFct);
-                new JSYG(this).off("mouseup",mouseupFct);
+                new JSYG(document).off("mouseup",mouseupFct);
             }
             
             e.preventDefault();
