@@ -27,15 +27,44 @@ if (typeof require!= "undefined") {
 
     test("Dimensions d'un élement", function() {
         
-        var svg = $('<svg width="500" height="400">').appendTo(container);
+        var svg = $('<svg width="500" height="500">').appendTo(container);
         var rect = $('<rect>').attr({width:200,height:200,x:50,y:50}).appendTo(svg);
                 
         var dimRect = rect.getDim();
-
-        expect(9);
         
         equal(svg.attr("width"),"500","largeur");
-        equal(svg.attr("height"),"400","hauteur");
+        equal(svg.attr("height"),"500","hauteur");
+        
+        svg.width(400);
+        equal(svg.attr("width"),"400px","largeur par l'attribut");
+        equal(svg.css("width"),"400px","largeur par css");
+        equal(svg.getDim().width,400,"largeur par la méthode getDim");
+        
+        svg.height(400);
+        equal(svg.attr("height"),"400px","hauteur par l'attribut");
+        equal(svg.css("height"),"400px","hauteur par css");
+        equal(svg.getDim().height,400,"hauteur par la méthode getDim");
+        
+        
+        svg.css("width","550px");
+        equal(svg.attr("width"),"550px","largeur par attribut");
+        equal(svg.css("width"),"550px","largeur par css");
+        equal(svg.getDim().width,550,"largeur par la méthode getDim");
+        
+        svg.css("height","550px");
+        equal(svg.attr("height"),"550px","hauteur par l'attribut");
+        equal(svg.css("height"),"550px","hauteur par css");
+        equal(svg.getDim().height,550,"hauteur par la méthode getDim");
+        
+        svg.setDim("width",600);
+        equal(svg.attr("width"),"600px","largeur par l'attribut");
+        equal(svg.css("width"),"600px","largeur par css");
+        equal(svg.getDim().width,600,"largeur par la méthode getDim");
+        
+        svg.setDim("height",600);
+        equal(svg.attr("height"),"600px","hauteur par l'attribut");
+        equal(svg.css("height"),"600px","hauteur par css");
+        equal(svg.getDim().height,600,"hauteur par la méthode getDim");
         
         equal(svg.parent()[0],container[0],"hierarchie DOM");
         

@@ -1037,7 +1037,7 @@
                 
                 default :
                     
-                    if ($this.isSVG()) {
+                    if ($this.isSVG() && !$this.isSVGroot()) {
                         
                         //les images dont l'url est un fichier svg se comportent plus comme des conteneurs (du moins avec ff)
                         if (isSVGImage($this)) {
@@ -1096,7 +1096,7 @@
                         
                         if ("width" in opt) {
                             
-                            if (tag == 'svg') $this.css('width',opt.width).attr('width',opt.width);
+                            if (tag == 'svg') $this.css('width',opt.width);
                             else {
                                 
                                 node.style.width = Math.max(0,opt.width
@@ -1109,7 +1109,7 @@
                         
                         if ("height" in opt) {
                             
-                            if (tag == 'svg') $this.css('height',opt.height).attr('height',opt.height);
+                            if (tag == 'svg') $this.css('height',opt.height);
                             else {
                                 node.style.height = Math.max(0,opt.height
                                     -getPropNum($this,'border-top-width')

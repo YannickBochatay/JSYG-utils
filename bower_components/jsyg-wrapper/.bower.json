@@ -35,12 +35,12 @@
     "library"
   ],
   "homepage": "https://github.com/YannickBochatay/JSYG-wrapper",
-  "version": "0.2.0",
-  "_release": "0.2.0",
+  "version": "0.3.4",
+  "_release": "0.3.4",
   "_resolution": {
     "type": "version",
-    "tag": "v0.2.0",
-    "commit": "0d17cbe86642ea9f05a59a53f2bccfc538895c3a"
+    "tag": "v0.3.4",
+    "commit": "81bebae884e74d98bf11c88d2ad55258100309e0"
   },
   "_source": "git://github.com/YannickBochatay/JSYG-wrapper.git",
   "_target": "*",
