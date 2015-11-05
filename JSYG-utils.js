@@ -369,9 +369,9 @@
             
             var $this = new JSYG(this);
             
-            $this.attrRemove('style');
+            $this.removeAttr('style');
             
-            if ($this.isSVG()) JSYG.svgCssProperties.forEach(function(attr) { $this.attrRemove(attr); });
+            if ($this.isSVG()) JSYG.svgCssProperties.forEach(function(attr) { $this.removeAttr(attr); });
             
         });
         
@@ -653,7 +653,7 @@
                 height = parseFloat(this.css("height"));
                 
                 viewBox = this.attr("viewBox");
-                if (viewBox) this.attrRemove("viewBox");
+                if (viewBox) this.removeAttr("viewBox");
                 
                 mtx = this.getMtx('screen');
                 
@@ -2346,7 +2346,7 @@
         
         if (standalone && this.isSVG()) {
             jNode.walkTheDom(function() {
-                new JSYG(this).style2attr().attrRemove("style");
+                new JSYG(this).style2attr().removeAttr("style");
             });
         }
         
