@@ -2523,11 +2523,11 @@
      * @returns {JSYG}
      */
     JSYG.prototype.moveBack = function() {
-            
+        
         return this.each(function() {
-           
+            
             var $this = new JSYG(this);
-               
+            
             $this.insertBefore( $this.prev() );
         });
     };
@@ -2537,9 +2537,9 @@
      * @returns {JSYG}
      */
     JSYG.prototype.moveToBack = function() {
-            
+        
         return this.each(function() {
-           
+            
             new JSYG(this).parent().prepend(this);
         });
     };
@@ -2549,37 +2549,97 @@
      * @returns {JSYG}
      */
     JSYG.prototype.moveFront = function() {
-            
+        
         return this.each(function() {
-           
+            
             var $this = new JSYG(this);
-               
+            
             $this.insertAfter( $this.next() );
         });
     };
     
-     /**
+    /**
      * Move each element after his parent last child
      * @returns {JSYG}
      */
     JSYG.prototype.moveToFront = function() {
-            
+        
         return this.each(function() {
-           
+            
             new JSYG(this).parent().append(this);
         });
     };
     
     
-    (function add2JSYG() {
+    JSYG.prototype.getUniqueSelector = function () {
         
-        for (var n in strUtils) JSYG[n] = strUtils[n];
+        var path;
         
-        JSYG.Matrix = Matrix;
-        JSYG.Vect = Vect;
-        JSYG.Point = Point;
+        var $node = this;
+        /*Include only names and IDs since you can always programmatically add/remove classes*/
+        var uniqueTags = ['name', 'id'];
         
-    }());
+        while ($node.length) {
+            
+            var realNode = $node[0],
+            name = realNode.localName,
+            parent,
+            uniqueIdentifierFound,
+            i,tag,tagValue,sameTagSiblings,allSiblings,index;
+            
+            if (!name) break;
+            
+            name = name.toLowerCase();
+            parent = $node.parent();
+            uniqueIdentifierFound = false;
+            
+            for (i=uniqueTags.length-1 ; i>= 0 ; i--) {
+                
+                tag = uniqueTags[i];
+                tagValue = $node.attr(tag);
+                
+                if (tagValue && (tagValue.trim !== '')) {
+                    
+                    name = '[' + tag + '=\"' + tagValue + '\"]';
+                    uniqueIdentifierFound = true;
+                    break;
+                }
+            }
+            
+            if (!uniqueIdentifierFound) {
+                sameTagSiblings = parent.children(name);
+                
+                if (sameTagSiblings.length > 1) {
+                    
+                    allSiblings = parent.children();
+                    index = allSiblings.index(realNode) + 1;
+                    name += ':nth-child(' + index + ')';
+                }
+                
+                path = name + (path ? '>' + path : '');
+                $node = parent;
+                
+            }
+            else {
+                path = name + (path ? '>' + path : '');
+                break; //exit while loop
+            }
+        }
+        
+        return path;
+    };
+
+
+
+(function add2JSYG() {
     
-    return JSYG;
+    for (var n in strUtils) JSYG[n] = strUtils[n];
+    
+    JSYG.Matrix = Matrix;
+    JSYG.Vect = Vect;
+    JSYG.Point = Point;
+    
+}());
+
+return JSYG;
 });
