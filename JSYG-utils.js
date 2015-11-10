@@ -2493,7 +2493,7 @@
         canvas.height = dim.height;
         
         if (tag == "img" || tag == "image") promise = Promise.resolve( this.href() );
-        else promise = this.toDataURL();
+        else promise = this.toDataURL(true);
         
         return promise.then(function(src) {
             
