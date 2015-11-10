@@ -2466,7 +2466,7 @@
             }) );
         }
         
-        if (recursive) this.each(function() { JSYG.walkTheDom(this,url2data); });
+        if (recursive) this.each(function() { JSYG.walkTheDom(url2data,this); });
         else this.each(url2data);
         
         return Promise.all(promises);
