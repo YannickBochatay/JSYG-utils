@@ -973,7 +973,7 @@
                         if (tag == 'text') dec = (parseFloat($this.attr("x")) || 0) - dim.x;
                         else {
                             dec = -dim.x;
-                            if (JSYG.support.svgUseBBox) dec += parseFloat($this.attr('x'));
+                            if (JSYG.support.svgUseBBox) dec += parseFloat($this.attr('x')) || 0;
                         }
                         
                         $this.attr('x',opt.x + dec);
@@ -984,7 +984,7 @@
                         if (tag == 'text') dec = (parseFloat($this.attr("y")) || 0) - dim.y;
                         else {
                             dec = -dim.y;
-                            if (JSYG.support.svgUseBBox) dec += parseFloat($this.attr('y'));
+                            if (JSYG.support.svgUseBBox) dec += parseFloat($this.attr('y')) || 0;
                         }
                         
                         $this.attr('y',opt.y + dec);
