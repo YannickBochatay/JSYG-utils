@@ -991,7 +991,7 @@
                         $this.attr('y',opt.y + dec);
                     }
                     
-                    if ('width' in opt || 'height' in opt) {
+                    if ('width' in opt && dim.width!=0 || 'height' in opt && dim.height!=0) {
                         
                         mtx = new Matrix();
                         
@@ -1831,6 +1831,8 @@
     JSYG.getCursorPos = function(evt,ref) {
         
         var mtx,rect;
+        
+        if (evt instanceof JSYG.Event) evt = evt.originalEvent;
         
         if (ref && !(ref instanceof JSYG)) ref = new JSYG(ref);
         
