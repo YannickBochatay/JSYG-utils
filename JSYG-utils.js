@@ -2180,6 +2180,12 @@
         
     })();
     
+    
+    //http://jointjs.com/blog/get-transform-to-element-polyfill.html
+    SVGElement.prototype.getTransformToElement = SVGElement.prototype.getTransformToElement || function(toElement) {
+        return toElement.getScreenCTM().inverse().multiply(this.getScreenCTM());
+    };
+    
     JSYG(function() {
         
         if (!svg || typeof document === "undefined") return false;
