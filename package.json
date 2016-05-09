@@ -1,6 +1,6 @@
 {
   "name": "jsyg-utils",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "Many features added to JSYG",
   "main": "JSYG-utils.js",
   "directories": {
