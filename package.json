@@ -1,6 +1,6 @@
 {
   "name": "jsyg-utils",
-  "version": "0.5.7",
+  "version": "0.6.0",
   "description": "Many features added to JSYG",
   "main": "JSYG-utils.js",
   "directories": {
@@ -25,8 +25,12 @@
     "url": "https://github.com/YannickBochatay/JSYG-utils/issues"
   },
   "homepage": "https://github.com/YannickBochatay/JSYG-utils#readme",
+  "devDependencies": {
+    "jquery": "^3.3.1",
+    "qunit": "latest",
+    "requirejs": "latest"
+  },
   "dependencies": {
-    "jquery": "^2.2.3",
     "jsyg-matrix": "",
     "jsyg-point": "",
     "jsyg-strutils": "",

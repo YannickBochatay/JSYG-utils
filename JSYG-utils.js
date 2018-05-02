@@ -6,7 +6,6 @@
     if (typeof module == "object" && typeof module.exports == "object" ) {
       
       module.exports = factory(
-          require("jquery"),
           require("jsyg-wrapper"),
           require("jsyg-matrix"),
           require("jsyg-vect"),
@@ -17,7 +16,6 @@
     if (typeof define == "function" && define.amd) {
       
     define("jsyg-utils",[
-        "jquery",
         "jsyg-wrapper",
         "jsyg-matrix",
         "jsyg-vect",
@@ -25,18 +23,22 @@
         "jsyg-strutils"
       ],factory);
     }
-    else if (root.JSYG && root.jQuery) {
+    else if (root.JSYG) {
         
-        if (JSYG.Matrix && JSYG.Vect && JSYG.Point && JSYG.utf8encode) factory(jQuery,JSYG,JSYG.Matrix,JSYG.Vect,JSYG.Point,JSYG);
+        if (JSYG.Matrix && JSYG.Vect && JSYG.Point && JSYG.utf8encode) factory(JSYG,JSYG.Matrix,JSYG.Vect,JSYG.Point,JSYG);
         else throw new Error("Missing dependency");
     }
     else throw new Error("JSYG is needed");
     
-})(this,function($,JSYG,Matrix,Vect,Point,strUtils) {
+})(this,function(JSYG,Matrix,Vect,Point,strUtils) {
     
     "use strict";
     
     var svg = JSYG.support.svg;
+
+    function isWindow(obj) {
+	    return obj != null && obj === obj.window;
+	}
     
     /**
      * récupère ou fixe la valeur d'un attribut (au sens xml) dans un espace de noms donné.<br/><br/>
@@ -638,7 +640,7 @@
             return swapDisplay(this,function() { return this.getDim(); });
         }
         
-        if ($.isWindow(node)) {
+        if (isWindow(node)) {
             
             dim = {
                 x : node.pageXOffset || document.documentElement.scrollLeft,
@@ -767,7 +769,7 @@
             
             if (!this.isSVG() && JSYG.support.addTransfForBoundingRect) { dim = addTransform(dim,this.getMtx()); } //FF
         }
-        else if (type === 'screen' || $.isWindow(type) || (type instanceof $ && $.isWindow(type[0]) ) ) {
+        else if (type === 'screen' || isWindow(type) || (type instanceof $ && isWindow(type[0]) ) ) {
             
             jWin = new JSYG(window);
             dim = this.getDim('page');
@@ -927,7 +929,7 @@
                 else if (!('height' in opt)) opt.height = dim.height * opt.width / dim.width;
             }
             
-            if ($.isWindow(node) || node.nodeType === 9) {
+            if (isWindow(node) || node.nodeType === 9) {
                 $this.getWindow().resizeTo( parseFloat(opt.width) || 0, parseFloat(opt.height) || 0 );
                 return;
             }
@@ -1680,7 +1682,7 @@
     JSYG.prototype.mtx2attrs = function(opt) {
         
         if (opt instanceof Matrix) opt = {mtx:opt};
-        else opt = $.extend({},opt);
+        else opt = Object.assign({},opt);
         
         this.each(function() {
             
@@ -2762,6 +2764,7 @@
     JSYG.Matrix = Matrix;
     JSYG.Vect = Vect;
     JSYG.Point = Point;
+    JSYG.isMobile = /Mobi/.test(navigator.userAgent);
     
 }());
 
