@@ -2755,8 +2755,6 @@
         return path;
     };
 
-
-
 (function add2JSYG() {
     
     for (var n in strUtils) JSYG[n] = strUtils[n];
@@ -2764,7 +2762,6 @@
     JSYG.Matrix = Matrix;
     JSYG.Vect = Vect;
     JSYG.Point = Point;
-    JSYG.isMobile = /Mobi/.test(navigator.userAgent);
     
 }());
 
