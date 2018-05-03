@@ -14,20 +14,24 @@ if (typeof require!= "undefined") {
     });
 }
 
+QUnit.config.autostart = false;
+
 (function(factory) {
     
-    if (typeof define == 'function' && define.amd) define(["jsyg-utils"],factory);
-    else factory(JSYG);
+    if (typeof define == 'function' && define.amd) require(["jsyg-utils"],factory);
+    else if (typeof JSYG !== "undefined") factory(JSYG);
     
 }(function($) {
+
+    QUnit.start()
 
     const { module, test } = QUnit
     
     module("jsyg-utils", () => {
     
-        var container = $("#qunit-fixture");
-
         test("Dimensions d'un élement", function(assert) {
+
+            var container = $("#qunit-fixture");
             
             var svg = $('<svg width="500" height="500">').appendTo(container);
             var rect = $('<rect>').attr({width:200,height:200,x:50,y:50}).appendTo(svg);
@@ -90,6 +94,8 @@ if (typeof require!= "undefined") {
         });
         
         test("ViewBox", function(assert) {
+
+            var container = $("#qunit-fixture");
 
             var svg = $('<svg width="500" height="400">').appendTo(container);
             
