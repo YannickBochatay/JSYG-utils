@@ -923,7 +923,7 @@
             $this = new JSYG(this),
             node = this;
             
-            if (('keepRatio' in opt) && ('width' in opt || 'height' in opt)) {
+            if (opt.keepRatio && ('width' in opt || 'height' in opt)) {
                 dim = $this.getDim();
                 if (!('width' in opt)) opt.width = dim.width * opt.height / dim.height;
                 else if (!('height' in opt)) opt.height = dim.height * opt.width / dim.width;
