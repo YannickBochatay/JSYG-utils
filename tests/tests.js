@@ -108,6 +108,17 @@ QUnit.config.autostart = false;
             );
             
         });
+
+        test("getMtx", function(assert) {
+            var container = $("#qunit-fixture");
+
+            var svg = $('<svg width="500" height="400">').appendTo(container);
+            var innerSvg = $('<svg x="10" y="10" width="100" height="100">').appendTo(svg);
+            var mtx = innerSvg.getMtx(svg)
+
+            assert.equal(mtx.e,0,"Récupération de la translation horizontale d'un svg inclus dans un svg");
+            assert.equal(mtx.f,0,"Récupération de la translation verticale d'un svg inclus dans un svg");
+        })
         
         test("strutils", function(assert) {
         
