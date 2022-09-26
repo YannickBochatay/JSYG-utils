@@ -332,6 +332,7 @@
             }
             
             if (!isSVG) this.setAttribute('style',styleAttr);
+            else if (style.length) this.removeAttribute("style");
         }
         
         if (recursive) this.walkTheDom(fct);
@@ -2485,7 +2486,6 @@
             jNode.walkTheDom(function() {
                 var $this = new JSYG(this);
                 $this.style2attr();
-                if (JSYG.svgGraphics.indexOf($this.getTag()) != -1) $this.removeAttr("style");
             });
         }
         
