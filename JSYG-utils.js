@@ -13,7 +13,7 @@
           require("jsyg-strutils")
       );
     }
-    if (typeof define == "function" && define.amd) {
+    else if (typeof define == "function" && define.amd) {
       
     define("jsyg-utils",[
         "jsyg-wrapper",
