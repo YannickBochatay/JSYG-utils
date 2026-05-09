@@ -2,6 +2,8 @@
 
 Many features added to [JSYG-wrapper](https://github.com/YannickBochatay/JSYG-wrapper)
 
+## ⚠️ Deprecated. Use [@jsyg/utils](https://github.com/YannickBochatay/jsyg-monorepo/tree/main/packages/utils) instead.
+
 ### Installation
 
 You probably don't need to install this module individually.
